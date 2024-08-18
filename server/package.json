@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+   "dev": "nodemon server.js",
     "start": "node server.js",
     "build": "npm install --legacy-peer-deps && npm install --legacy-peer-deps --prefix client && npm run build --prefix client"
   },
@@ -20,7 +20,8 @@
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.3",
     "nodemon": "^3.1.4",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "url": "^0.11.4"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

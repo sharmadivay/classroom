@@ -5,6 +5,7 @@ import connect from "./db/connectDB.js";
 import userRoutes from "./routes/userRoute.js";
 import classroomRoutes from "./routes/classroomRoutes.js";
 import path from "path";
+import { fileURLToPath } from "url";
 const app = express();
 
 dotenv.config();
@@ -18,18 +19,13 @@ const PORT = process.env.PORT || 5000;
 
 // --------------------------deployment------------------------------
 
-const __dirname1 = path.resolve();
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname1, "/client/dist")));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname1, "client", "dist", "index.html"))
-  );
-} else {
-  app.get("/", (req, res) => {
-    res.send("API is running..");
-  });
-}
+app.get("/", (req, res) => {
+  app.use(express.static(path.resolve(__dirname, "client", "dist")));
+  res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
+});
 
 // --------------------------deployment------------------------------
 app.listen(PORT, async () => {
