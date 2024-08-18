@@ -12,11 +12,14 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:5002/api/user/register`, {
-        name,
-        email,
-        password,
-      });
+      const res = await axios.post(
+        `${window.location.origin}/api/user/register`,
+        {
+          name,
+          email,
+          password,
+        }
+      );
       if (res.data.success) {
         toast.success(res.data.message);
         navigate("/login");

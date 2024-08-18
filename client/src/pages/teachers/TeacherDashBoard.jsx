@@ -28,7 +28,7 @@ const TeacherDashBoard = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:5002/api/user/update/${editingUser._id}`,
+        `${window.location.origin}/api/user/update/${editingUser._id}`,
         formData
       );
 
@@ -64,7 +64,7 @@ const TeacherDashBoard = () => {
 
   const handleDelete = async (userId) => {
     try {
-      await axios.delete(`http://localhost:5002/api/user/delete/${userId}`);
+      await axios.delete(`${window.location.origin}/api/user/delete/${userId}`);
 
       setStudents(students.filter((student) => student._id !== userId));
     } catch (error) {
@@ -76,7 +76,7 @@ const TeacherDashBoard = () => {
     const fetchClassrooms = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5002/api/classroom/classrooms"
+          `${window.location.origin}/api/classroom/classrooms`
         );
 
         const filteredClassrooms = response.data.classrooms.filter(

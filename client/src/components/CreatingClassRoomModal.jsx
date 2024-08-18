@@ -58,7 +58,7 @@ const CreatingClassRoomModal = ({ handleIsCreatingClassroom }) => {
   const handleCreateClassroom = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:5002/api/classroom/create`,
+        `${window.location.origin}/api/classroom/create`,
         {
           name: newClassroom.name,
           teacher: selectedTeacher,
@@ -84,7 +84,7 @@ const CreatingClassRoomModal = ({ handleIsCreatingClassroom }) => {
     const fetchStudents = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5002/api/user/students"
+          `${window.location.origin}/api/user/students`
         );
         setStudents(response.data.students);
       } catch (error) {
@@ -95,7 +95,7 @@ const CreatingClassRoomModal = ({ handleIsCreatingClassroom }) => {
     const fetchTeachers = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5002/api/user/teachers"
+          `${window.location.origin}/api/user/teachers`
         );
         setTeachers(response.data.teachers);
       } catch (error) {

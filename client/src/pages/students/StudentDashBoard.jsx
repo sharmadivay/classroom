@@ -11,7 +11,7 @@ const StudentDashBoard = () => {
     const fetchClassrooms = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5002/api/classroom/classrooms"
+          `${window.location.origin}/api/classroom/classrooms`
         );
 
         const filteredClassrooms = response.data.classrooms.filter(

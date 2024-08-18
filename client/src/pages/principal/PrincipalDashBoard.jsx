@@ -44,7 +44,7 @@ const PrincipalDashBoard = () => {
   const handleRemoveTeacher = async (classroomId, teacherId) => {
     try {
       await axios.patch(
-        `http://localhost:5002/api/classroom/removeTeacher/${classroomId}/${teacherId}`
+        `${window.location.origin}/api/classroom/removeTeacher/${classroomId}/${teacherId}`
       );
       setClassrooms((prevClassrooms) =>
         prevClassrooms.map((classroom) =>
@@ -61,7 +61,7 @@ const PrincipalDashBoard = () => {
   const handleRemoveStudent = async (classroomId, studentId) => {
     try {
       await axios.patch(
-        `http://localhost:5002/api/classroom/removeStudent/${classroomId}/${studentId}`,
+        `${window.location.origin}/api/classroom/removeStudent/${classroomId}/${studentId}`,
         { studentId }
       );
       setClassrooms((prevClassrooms) =>
@@ -85,7 +85,7 @@ const PrincipalDashBoard = () => {
     try {
       console.log(editClassroomData);
       await axios.put(
-        `http://localhost:5002/api/classroom/update/${editingClassroom._id}`,
+        `${window.location.origin}/api/classroom/update/${editingClassroom._id}`,
         editClassroomData
       );
       setClassrooms((prevClassrooms) =>
@@ -108,7 +108,7 @@ const PrincipalDashBoard = () => {
 
   const handleDelete = async (userId) => {
     try {
-      await axios.delete(`http://localhost:5002/api/user/delete/${userId}`);
+      await axios.delete(`${window.location.origin}/api/user/delete/${userId}`);
       setTeachers(teachers.filter((teacher) => teacher._id !== userId));
       setStudents(students.filter((student) => student._id !== userId));
     } catch (error) {
@@ -153,7 +153,7 @@ const PrincipalDashBoard = () => {
       if (isAddMode) {
         // Create new user
         const response = await axios.post(
-          `http://localhost:5002/api/user/register`,
+          `${window.location.origin}/api/user/register`,
           formData
         );
 
@@ -167,7 +167,7 @@ const PrincipalDashBoard = () => {
       } else {
         // Update existing user
         await axios.put(
-          `http://localhost:5002/api/user/update/${editingUser._id}`,
+          `${window.location.origin}/api/user/update/${editingUser._id}`,
           formData
         );
         setTeachers((prevTeachers) =>
@@ -202,7 +202,7 @@ const PrincipalDashBoard = () => {
     const fetchStudents = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5002/api/user/students"
+          `${window.location.origin}/api/user/students`
         );
         setStudents(response.data.students);
       } catch (error) {
@@ -213,7 +213,7 @@ const PrincipalDashBoard = () => {
     const fetchTeachers = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5002/api/user/teachers"
+          `${window.location.origin}/api/user/teachers`
         );
         setTeachers(response.data.teachers);
       } catch (error) {
@@ -224,7 +224,7 @@ const PrincipalDashBoard = () => {
     const fetchClassrooms = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5002/api/classroom/classrooms"
+          `${window.location.origin}/api/classroom/classrooms`
         );
 
         setClassrooms(response.data.classrooms);
