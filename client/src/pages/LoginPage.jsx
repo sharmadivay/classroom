@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -66,6 +66,12 @@ const LoginPage = () => {
           >
             Login
           </button>
+          <div>
+            New User?
+            <Link to={"/register"} className="text-sky-300">
+              Register
+            </Link>
+          </div>
         </form>
       </div>
     </>

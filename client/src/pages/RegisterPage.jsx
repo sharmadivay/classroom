@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -81,6 +81,12 @@ const RegisterPage = () => {
           >
             REGISTER
           </button>
+          <div>
+            Already Register?
+            <Link to={"/login"} className="text-sky-300">
+              Login
+            </Link>
+          </div>
         </form>
       </div>
     </>
